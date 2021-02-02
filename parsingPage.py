@@ -4,26 +4,14 @@ import csv
 import os
 import time
 
-URL = 'https://arbalet23.ru/catalog/dlya_zhivotnykh/napolniteli_igrushki_miski/napolnitel_dlya_koshachego_tualeta_komkuyushchiysya_biorazlagaemyy_tofu_persik_sibirskaya_koshka_6_l.html'
+URL = ''
 HEADERS = {'User-Agent': 'Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Mobile Safari/537.36', 'accept': '*/*'}
-HOST='https://arbalet23.ru'
+HOST=''
 FILE = 'pageMeta.csv'
 
 def get_html (url, params=None):
     r = requests.get(url, headers=HEADERS)
     return r
-
-# def get_meta(html):
-#     soup = BeautifulSoup(html, 'html.parser')
-#     tags = soup.find_all('meta', class_='proposition')
-#     metatags = []
-#     url = soup.find("meta", property="og:url")
-#     title = soup.find("meta",  property="og:title")
-#     description = soup.find("meta", property="og:description")
-#     h1 = soup.find('h1').get_text()
-#     metatags = url["content"]if title else "URL не указан",title["content"] if title else "Title не указан",description["content"] if title else "Description не указан",h1 if title else "H1 не указан"
-#     return metatags
-
 def get_meta(html):
     soup = BeautifulSoup(html, 'html.parser')
     tags = soup.find_all('meta', class_='proposition')
@@ -33,10 +21,10 @@ def get_meta(html):
     description = soup.find("meta", property="og:description")
     h1 = soup.find('h1').get_text()
     # check
-    url["content"] if url else "URL не указан"
-    title["content"] if title else "Title не указан"
-    description["content"] if title else "Description не указан"
-    h1 if title else "H1 не указан"
+    url["content"] if url else "URL  �� ������"
+    title["content"] if title else "Title  �� ������"
+    description["content"] if title else "Description  �� ������"
+    h1 if title else "H1  �� ������"
     metatags.append({
         'url': url["content"],
         'title': title["content"],
